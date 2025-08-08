@@ -434,10 +434,10 @@ export default function Main() {
                             src="/ollivrServicesLogo.png"
                             class="col-span-1 size-full aspect-square object-contain border border-gray-500"
                         />
-                        <div class={"col-span-1 size-full aspect-square flex justify-center items-center border border-gray-500"}>
+                        <div class={"col-span-1 size-full aspect-square flex justify-center items-center border border-gray-500 p-2 sm:p-4"}>
                         <img
-                            alt="We Are KBeauty"
-                            src="/weAreKBeautyLogo.avif"
+                            alt="Custom Ink and Thread"
+                            src="/customInkAndThread.png"
                             class="size-full aspect-square object-contain"
                         />
                         </div>
@@ -504,12 +504,11 @@ export default function Main() {
                 <div class="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
                     <div
                         class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
-                        <h2 class="mx-auto max-w-3xl text-center text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                            Get notified when we’re launching
+                        <h2 class="uppercase mx-auto max-w-3xl text-center text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+                            Stay in the know
                         </h2>
                         <p class="mx-auto mt-6 max-w-lg text-center text-lg text-gray-300">
-                            Reprehenderit ad esse et non officia in nulla. Id proident tempor incididunt nostrud nulla
-                            et culpa.
+                            Stay ahead of the curve with the latest trends in cosmetics and clothing. Sign up for our newsletter to get exclusive updates, special offers, and a first look at new arrivals from all of our brands and stores.
                         </p>
                         <form class="mx-auto mt-10 flex max-w-md gap-x-4">
                             <label html-for="email-address" class="sr-only">
