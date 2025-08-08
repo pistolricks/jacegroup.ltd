@@ -1,22 +1,20 @@
 'use client'
 
-import { createSignal } from 'solid-js'
-import {
-    arrowPath,
-    chevronRight,
-    cloudArrowUp,
-    lockClosed,
-    server,
-} from "solid-heroicons/solid";
-import {
-    bars_3, xMark
-} from "solid-heroicons/outline";
+import {createSignal, For} from 'solid-js'
+import {arrowPath, chevronRight, cloudArrowUp, lockClosed, server, stop,} from "solid-heroicons/solid";
+import {bars_3, xMark} from "solid-heroicons/outline";
+import {Icon} from 'solid-heroicons';
+import Dialog from "@corvu/dialog";
+import {A} from '@solidjs/router';
+import {cn} from "~/app";
+
+
 
 const navigation = [
-    { name: 'Product', href: '#' },
-    { name: 'Features', href: '#' },
-    { name: 'Marketplace', href: '#' },
-    { name: 'Company', href: '#' },
+    {name: 'Product', href: '#'},
+    {name: 'Features', href: '#'},
+    {name: 'Marketplace', href: '#'},
+    {name: 'Company', href: '#'},
 ]
 const primaryFeatures = [
     {
@@ -37,23 +35,23 @@ const primaryFeatures = [
 ]
 const secondaryFeatures = [
     {
-        name: 'Push to deploy',
+        name: 'Digital Foundation',
         description:
-            'Commodo nec sagittis tortor mauris sed. Turpis tortor quis scelerisque diam id accumsan nullam tempus. Pulvinar etiam lacus volutpat eu. Phasellus praesent ligula sit faucibus.',
+            'We build robust software solutions that form the backbone of your operations, from streamlining internal processes to creating seamless customer experiences.',
         href: '#',
         icon: cloudArrowUp,
     },
     {
-        name: 'SSL certificates',
+        name: 'Brand Identity',
         description:
-            'Pellentesque enim a commodo malesuada turpis eleifend risus. Facilisis donec placerat sapien consequat tempor fermentum nibh.',
+            'We craft compelling brand narratives and visual identities that resonate with your target audience, building trust and loyalty.',
         href: '#',
         icon: lockClosed,
     },
     {
-        name: 'Simple queues',
+        name: 'Product Innovation',
         description:
-            'Pellentesque sit elit congue ante nec amet. Dolor aenean curabitur viverra suspendisse iaculis eget. Nec mollis placerat ultricies euismod ut condimentum.',
+            'We develop innovative and market-ready products, turning your ideas into tangible, high-quality offerings for both retail and B2B markets.',
         href: '#',
         icon: arrowPath,
     },
@@ -174,98 +172,74 @@ const testimonials = [
 ]
 const footerNavigation = {
     solutions: [
-        { name: 'Marketing', href: '#' },
-        { name: 'Analytics', href: '#' },
-        { name: 'Automation', href: '#' },
-        { name: 'Commerce', href: '#' },
-        { name: 'Insights', href: '#' },
+        {name: 'Marketing', href: '#'},
+        {name: 'Analytics', href: '#'},
+        {name: 'Automation', href: '#'},
+        {name: 'Commerce', href: '#'},
+        {name: 'Insights', href: '#'},
     ],
     support: [
-        { name: 'Submit ticket', href: '#' },
-        { name: 'Documentation', href: '#' },
-        { name: 'Guides', href: '#' },
+        {name: 'Submit ticket', href: '#'},
+        {name: 'Documentation', href: '#'},
+        {name: 'Guides', href: '#'},
     ],
     company: [
-        { name: 'About', href: '#' },
-        { name: 'Blog', href: '#' },
-        { name: 'Jobs', href: '#' },
-        { name: 'Press', href: '#' },
+        {name: 'About', href: '#'},
+        {name: 'Blog', href: '#'},
+        {name: 'Jobs', href: '#'},
+        {name: 'Press', href: '#'},
     ],
     legal: [
-        { name: 'Terms of service', href: '#' },
-        { name: 'Privacy policy', href: '#' },
-        { name: 'License', href: '#' },
+        {name: 'Terms of service', href: '#'},
+        {name: 'Privacy policy', href: '#'},
+        {name: 'License', href: '#'},
     ],
     social: [
         {
             name: 'Facebook',
             href: '#',
-            icon: (props: any) => (
-                <svg fill="currentColor" view-box="0 0 24 24" {...props}>
-                    <path
-                        fill-rule="evenodd"
-                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                        clip-rule="evenodd"
-                    />
-                </svg>
-            ),
+            icon: {
+                path: stop,
+                className: 'text-gray-400 size-6',
+            }
         },
         {
             name: 'Instagram',
             href: '#',
-            icon: (props: any) => (
-                <svg fill="currentColor" view-box="0 0 24 24" {...props}>
-                    <path
-                        fill-rule="evenodd"
-                        d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                        clip-rule="evenodd"
-                    />
-                </svg>
-            ),
+            icon: {
+                path: stop,
+                className: 'text-gray-400 size-6',
+            }
         },
         {
             name: 'X',
             href: '#',
-            icon: (props: any) => (
-                <svg fill="currentColor" view-box="0 0 24 24" {...props}>
-                    <path d="M13.6823 10.6218L20.2391 3H18.6854L12.9921 9.61788L8.44486 3H3.2002L10.0765 13.0074L3.2002 21H4.75404L10.7663 14.0113L15.5685 21H20.8131L13.6819 10.6218H13.6823ZM11.5541 13.0956L10.8574 12.0991L5.31391 4.16971H7.70053L12.1742 10.5689L12.8709 11.5655L18.6861 19.8835H16.2995L11.5541 13.096V13.0956Z" />
-                </svg>
-            ),
+            icon: {
+                path: stop,
+                className: 'text-gray-400 size-6',
+            }
         },
         {
             name: 'GitHub',
             href: '#',
-            icon: (props: any) => (
-                <svg fill="currentColor" view-box="0 0 24 24" {...props}>
-                    <path
-                        fill-rule="evenodd"
-                        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                        clip-rule="evenodd"
-                    />
-                </svg>
-            ),
+            icon: {
+                path: stop,
+                className: 'text-gray-400 size-6',
+            }
         },
         {
             name: 'YouTube',
             href: '#',
-            icon: (props: any) => (
-                <svg fill="currentColor" view-box="0 0 24 24" {...props}>
-                    <path
-                        fill-rule="evenodd"
-                        d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
-                        clip-rule="evenodd"
-                    />
-                </svg>
-            ),
+            icon: {
+                path: stop,
+                className: 'text-gray-400 size-6',
+            }
         },
     ],
 }
 
-function classNames(classes: any) {
-    return classes?.filter(Boolean).join(' ')
-}
 
-export default function Example() {
+export default function Main() {
     const [mobileMenuOpen, setMobileMenuOpen] = createSignal(false)
 
     return (
@@ -274,14 +248,14 @@ export default function Example() {
             <header class="absolute inset-x-0 top-0 z-50">
                 <nav aria-label="Global" class="flex items-center justify-between p-6 lg:px-8">
                     <div class="flex lg:flex-1">
-                        <a href="#" class="-m-1.5 p-1.5">
-                            <span class="sr-only">Your Company</span>
+                        <A href="#" class="-m-1.5 p-1.5">
+                            <span class="sr-only">Jace & Company</span>
                             <img
                                 alt=""
-                                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                                class="h-8 w-auto"
+                                src="/jace_company.png"
+                                class="h-14 w-auto rounded-md"
                             />
-                        </a>
+                        </A>
                     </div>
                     <div class="flex lg:hidden">
                         <button
@@ -290,67 +264,73 @@ export default function Example() {
                             class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
                         >
                             <span class="sr-only">Open main menu</span>
-                            <bars3 aria-hidden="true" class="size-6" />
+                            <Icon path={bars_3} aria-hidden="true" class="size-6"/>
                         </button>
                     </div>
                     <div class="hidden lg:flex lg:gap-x-12">
-                        {navigation.map((item) => (
-                            <a key={item.name} href={item.href} class="text-sm/6 font-semibold text-gray-900">
-                                {item.name}
-                            </a>
-                        ))}
+                        <For each={navigation}>
+                            {(item) => (
+                                <A href={item.href} class="text-sm/6 font-semibold text-gray-900">
+                                    {item.name}
+                                </A>
+                            )}
+                        </For>
                     </div>
                     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-                        <a href="#" class="text-sm/6 font-semibold text-gray-900">
+                        <A href="#" class="text-sm/6 font-semibold text-gray-900">
                             Log in <span aria-hidden="true">&rarr;</span>
-                        </a>
+                        </A>
                     </div>
                 </nav>
-                <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} class="lg:hidden">
-                    <div class="fixed inset-0 z-50" />
-                    <DialogPanel class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-                        <div class="flex items-center justify-between">
-                            <a href="#" class="-m-1.5 p-1.5">
-                                <span class="sr-only">Your Company</span>
-                                <img
-                                    alt=""
-                                    src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                                    class="h-8 w-auto"
-                                />
-                            </a>
-                            <button
-                                type="button"
-                                onClick={() => setMobileMenuOpen(false)}
-                                class="-m-2.5 rounded-md p-2.5 text-gray-700"
-                            >
-                                <span class="sr-only">Close menu</span>
-                                <xMark aria-hidden="true" class="size-6" />
-                            </button>
-                        </div>
-                        <div class="mt-6 flow-root">
-                            <div class="-my-6 divide-y divide-gray-500/10">
-                                <div class="space-y-2 py-6">
-                                    {navigation.map((item) => (
+                <Dialog open={mobileMenuOpen()} onOpenChange={setMobileMenuOpen}>
+                    <Dialog.Overlay class="fixed inset-0 z-50"/>
+                    <Dialog.Portal>
+                        <Dialog.Content
+                            class="lg:hidden fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+                            <div class="flex items-center justify-between">
+                                <A href="#" class="-m-1.5 p-1.5">
+                                    <span class="sr-only">Jace & Company</span>
+                                    <img
+                                        alt=""
+                                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=pink&shade=600"
+                                        class="h-8 w-auto"
+                                    />
+                                </A>
+                                <button
+                                    type="button"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    class="-m-2.5 rounded-md p-2.5 text-gray-700"
+                                >
+                                    <span class="sr-only">Close menu</span>
+                                    <Icon path={xMark} aria-hidden="true" class="size-6"/>
+                                </button>
+                            </div>
+                            <div class="mt-6 flow-root">
+                                <div class="-my-6 divide-y divide-gray-500/10">
+                                    <div class="space-y-2 py-6">
+                                        <For each={navigation}>
+                                            {(item) => (
+                                                <a
+                                                    href={item.href}
+                                                    class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                                >
+                                                    {item.name}
+                                                </a>
+                                            )}
+                                        </For>
+                                    </div>
+                                    <div class="py-6">
                                         <a
-                                            key={item.name}
-                                            href={item.href}
-                                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                            href="#"
+                                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                                         >
-                                            {item.name}
+                                            Log in
                                         </a>
-                                    ))}
-                                </div>
-                                <div class="py-6">
-                                    <a
-                                        href="#"
-                                        class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                                    >
-                                        Log in
-                                    </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </DialogPanel>
+                        </Dialog.Content>
+                    </Dialog.Portal>
                 </Dialog>
             </header>
 
@@ -370,7 +350,7 @@ export default function Example() {
                                 height={200}
                                 patternUnits="userSpaceOnUse"
                             >
-                                <path d="M100 200V.5M.5 .5H200" fill="none" />
+                                <path d="M100 200V.5M.5 .5H200" fill="none"/>
                             </pattern>
                         </defs>
                         <svg x="50%" y={-1} class="overflow-visible fill-gray-50">
@@ -379,38 +359,42 @@ export default function Example() {
                                 stroke-width={0}
                             />
                         </svg>
-                        <rect fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)" width="100%" height="100%" stroke-width={0} />
+                        <rect fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)" width="100%" height="100%"
+                              stroke-width={0}/>
                     </svg>
-                    <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
+                    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-16 -mb-50">
+                        <div
+                            class="border border-gray-400 relative isolate overflow-hidden px-6 pt-20 sm:rounded-t-4xl sm:px-10 sm:pt-24 lg:pt-24 xl:px-24">
                         <div class="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
                             <div class="flex">
-                                <div class="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                                    <span class="font-semibold text-indigo-600">We’re hiring</span>
-                                    <span aria-hidden="true" class="h-4 w-px bg-gray-900/10" />
-                                    <a href="#" class="flex items-center gap-x-1">
-                                        <span aria-hidden="true" class="absolute inset-0" />
+                                <div
+                                    class="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+                                    <span class="font-semibold text-pink-600">We’re hiring</span>
+                                    <span aria-hidden="true" class="h-4 w-px bg-gray-900/10"/>
+                                    <A href="#" class="flex items-center gap-x-1">
+                                        <span aria-hidden="true" class="absolute inset-0"/>
                                         See open positions
-                                        <chevronRight aria-hidden="true" class="-mr-2 size-5 text-gray-400" />
-                                    </a>
+                                        <Icon path={chevronRight} aria-hidden="true"
+                                              class="-mr-2 size-5 text-gray-400"/>
+                                    </A>
                                 </div>
                             </div>
                             <h1 class="mt-10 text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl">
-                                A better way to ship your projects
+                                A Better Way to Build.
                             </h1>
                             <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-                                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet
-                                fugiat veniam occaecat fugiat aliqua. Anim aute id magna aliqua ad ad non deserunt sunt.
+                                We build the software that powers your business, the brands that connect with your customers, and the products they'll love.
                             </p>
                             <div class="mt-10 flex items-center gap-x-6">
                                 <a
                                     href="#"
-                                    class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    class="rounded-md bg-pink-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-pink-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
                                 >
                                     Get started
                                 </a>
-                                <a href="#" class="text-sm/6 font-semibold text-gray-900">
+                                <A href="#" class="text-sm/6 font-semibold text-gray-900">
                                     Learn more <span aria-hidden="true">→</span>
-                                </a>
+                                </A>
                             </div>
                         </div>
                         <div class="mt-16 sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
@@ -418,7 +402,7 @@ export default function Example() {
                                 <title>App screenshot</title>
                                 <defs>
                                     <clipPath id="2ade4387-9c63-4fc4-b754-10e687a0d332">
-                                        <rect rx={36} width={316} height={684} />
+                                        <rect rx={36} width={316} height={684}/>
                                     </clipPath>
                                 </defs>
                                 <path
@@ -435,19 +419,24 @@ export default function Example() {
                                     clip-path="url(#2ade4387-9c63-4fc4-b754-10e687a0d332)"
                                     transform="translate(24 24)"
                                 >
+                                    {/*
                                     <img
                                         alt=""
                                         src="https://tailwindcss.com/plus-assets/img/component-images/mobile-app-screenshot.png"
                                     />
+                                    */}
                                 </foreignObject>
                             </svg>
                         </div>
                     </div>
                 </div>
-
+                </div>
                 {/* Logo cloud */}
+                {/*
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                    <div class="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 opacity-40 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                    <div
+                        class="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 opacity-40 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+
                         <img
                             alt="Transistor"
                             src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-gray-900.svg"
@@ -483,40 +472,49 @@ export default function Example() {
                             height={48}
                             class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
                         />
+
                     </div>
                 </div>
-
+*/}
                 {/* Feature section */}
-                <div class="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
-                    <div class="relative isolate overflow-hidden bg-gray-900 px-6 py-20 sm:rounded-3xl sm:px-10 sm:py-24 lg:py-24 xl:px-24">
-                        <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-y-0">
+                <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                    <div
+                        class="relative isolate overflow-hidden bg-gray-900 px-6 py-20 sm:rounded-3xl sm:px-10 sm:py-24 lg:py-24 xl:px-24">
+                        <div
+                            class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-y-0">
                             <div class="lg:row-start-2 lg:max-w-md">
                                 <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
-                                    Boost your productivity. Start using our app today.
+                                    Get Started
                                 </h2>
                                 <p class="mt-6 text-lg/8 text-gray-300">
-                                    Ac euismod vel sit maecenas id pellentesque eu sed consectetur. Malesuada adipiscing sagittis vel
-                                    nulla. Ac euismod vel sit maecenas.
+
                                 </p>
                             </div>
+                            {/*
                             <img
                                 alt="Product screenshot"
-                                src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
+                                src="/compaytics.png"
                                 width={2432}
                                 height={1442}
-                                class="relative -z-20 max-w-xl min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-5xl lg:max-w-none"
+                                class="opacity-70 relative -z-20 max-w-xl min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-5xl lg:max-w-none"
                             />
-                            <div class="max-w-xl lg:row-start-3 lg:mt-10 lg:max-w-md lg:border-t lg:border-white/10 lg:pt-10">
+                            */}
+                            <div
+                                class="max-w-xl lg:row-start-3 lg:mt-10 lg:max-w-md lg:border-t lg:border-white/10 lg:pt-10">
                                 <dl class="max-w-xl space-y-8 text-base/7 text-gray-300 lg:max-w-none">
-                                    {primaryFeatures.map((feature) => (
-                                        <div key={feature.name} class="relative">
-                                            <dt class="ml-9 inline-block font-semibold text-white">
-                                                <feature.icon aria-hidden="true" class="absolute top-1 left-1 size-5 text-indigo-500" />
-                                                {feature.name}
-                                            </dt>{' '}
-                                            <dd class="inline">{feature.description}</dd>
-                                        </div>
-                                    ))}
+                                    <For each={primaryFeatures}>
+                                        {(feature) => (
+                                            <div class="relative">
+                                                <dt class="ml-9 inline-block font-semibold text-white">
+                                                    <Icon path={feature.icon} aria-hidden="true"
+                                                          class="absolute top-1 left-1 size-5 text-pink-500"/>
+                                                    {feature.name}
+                                                </dt>
+                                                {' '}
+                                                <dd class="inline">{feature.description}</dd>
+                                            </div>
+                                        )}
+                                    </For>
                                 </dl>
                             </div>
                         </div>
@@ -538,45 +536,50 @@ export default function Example() {
                 {/* Feature section */}
                 <div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
                     <div class="mx-auto max-w-2xl lg:text-center">
-                        <h2 class="text-base/7 font-semibold text-indigo-600">Deploy faster</h2>
+                        <h2 class="text-base/7 font-semibold text-pink-600">Market Growth</h2>
                         <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">
-                            Everything you need to deploy your app
+                            Building better businesses from the inside out.
                         </p>
                         <p class="mt-6 text-lg/8 text-gray-600">
-                            Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum
-                            pulvinar et feugiat blandit at. In mi viverra elit nunc.
+                            We equip your business with the tools and strategies needed to expand your reach and build a strong presence in your industry.
                         </p>
                     </div>
                     <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
                         <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-                            {secondaryFeatures.map((feature) => (
-                                <div key={feature.name} class="flex flex-col">
-                                    <dt class="flex items-center gap-x-3 text-base/7 font-semibold text-gray-900">
-                                        <feature.icon aria-hidden="true" class="size-5 flex-none text-indigo-600" />
-                                        {feature.name}
-                                    </dt>
-                                    <dd class="mt-4 flex flex-auto flex-col text-base/7 text-gray-600">
-                                        <p class="flex-auto">{feature.description}</p>
-                                        <p class="mt-6">
-                                            <a href={feature.href} class="text-sm/6 font-semibold text-indigo-600 hover:text-indigo-500">
-                                                Learn more <span aria-hidden="true">→</span>
-                                            </a>
-                                        </p>
-                                    </dd>
-                                </div>
-                            ))}
+                            <For each={secondaryFeatures}>
+                                {(feature) => (
+                                    <div class="flex flex-col">
+                                        <dt class="flex items-center gap-x-3 text-base/7 font-semibold text-gray-900">
+                                            <Icon path={feature.icon} aria-hidden="true"
+                                                  class="size-5 flex-none text-pink-600"/>
+                                            {feature.name}
+                                        </dt>
+                                        <dd class="mt-4 flex flex-auto flex-col text-base/7 text-gray-600">
+                                            <p class="flex-auto">{feature.description}</p>
+                                            <p class="mt-6">
+                                                <A href={feature.href}
+                                                   class="text-sm/6 font-semibold text-pink-600 hover:text-pink-500">
+                                                    Learn more <span aria-hidden="true">→</span>
+                                                </A>
+                                            </p>
+                                        </dd>
+                                    </div>
+                                )}
+                            </For>
                         </dl>
                     </div>
                 </div>
 
                 {/* Newsletter section */}
                 <div class="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
-                    <div class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
+                    <div
+                        class="relative isolate overflow-hidden bg-gray-900 px-6 py-24 shadow-2xl sm:rounded-3xl sm:px-24 xl:py-32">
                         <h2 class="mx-auto max-w-3xl text-center text-4xl font-semibold tracking-tight text-white sm:text-5xl">
                             Get notified when we’re launching
                         </h2>
                         <p class="mx-auto mt-6 max-w-lg text-center text-lg text-gray-300">
-                            Reprehenderit ad esse et non officia in nulla. Id proident tempor incididunt nostrud nulla et culpa.
+                            Reprehenderit ad esse et non officia in nulla. Id proident tempor incididunt nostrud nulla
+                            et culpa.
                         </p>
                         <form class="mx-auto mt-10 flex max-w-md gap-x-4">
                             <label html-for="email-address" class="sr-only">
@@ -589,7 +592,7 @@ export default function Example() {
                                 required
                                 placeholder="Enter your email"
                                 auto-complete="email"
-                                class="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                                class="min-w-0 flex-auto rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-pink-500 sm:text-sm/6"
                             />
                             <button
                                 type="submit"
@@ -603,7 +606,8 @@ export default function Example() {
                             aria-hidden="true"
                             class="absolute top-1/2 left-1/2 -z-10 size-256 -translate-x-1/2"
                         >
-                            <circle r={512} cx={512} cy={512} fill="url(#759c1415-0410-454c-8f7c-9a820de03641)" fill-opacity="0.7" />
+                            <circle r={512} cx={512} cy={512} fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
+                                    fill-opacity="0.7"/>
                             <defs>
                                 <radialGradient
                                     r={1}
@@ -613,8 +617,8 @@ export default function Example() {
                                     gradientUnits="userSpaceOnUse"
                                     gradientTransform="translate(512 512) rotate(90) scale(512)"
                                 >
-                                    <stop stop-color="#7775D6" />
-                                    <stop offset={1} stop-color="#E935C1" stop-opacity={0} />
+                                    <stop stop-color="#7775D6"/>
+                                    <stop offset={1} stop-color="#E935C1" stop-opacity={0}/>
                                 </radialGradient>
                             </defs>
                         </svg>
@@ -636,7 +640,7 @@ export default function Example() {
                                 height={200}
                                 patternUnits="userSpaceOnUse"
                             >
-                                <path d="M.5 200V.5H200" fill="none" />
+                                <path d="M.5 200V.5H200" fill="none"/>
                             </pattern>
                         </defs>
                         <svg x="50%" y={0} class="overflow-visible fill-gray-50">
@@ -645,7 +649,8 @@ export default function Example() {
                                 stroke-width={0}
                             />
                         </svg>
-                        <rect fill="url(#55d3d46d-692e-45f2-becd-d8bdc9344f45)" width="100%" height="100%" stroke-width={0} />
+                        <rect fill="url(#55d3d46d-692e-45f2-becd-d8bdc9344f45)" width="100%" height="100%"
+                              stroke-width={0}/>
                     </svg>
                     <div class="relative">
                         <div
@@ -674,69 +679,82 @@ export default function Example() {
                         </div>
                         <div class="mx-auto max-w-7xl px-6 lg:px-8">
                             <div class="mx-auto max-w-2xl text-center">
-                                <h2 class="text-base/7 font-semibold text-indigo-600">Testimonials</h2>
+                                <h2 class="text-base/7 font-semibold text-pink-600">Testimonials</h2>
                                 <p class="mt-2 text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
                                     We have worked with thousands of amazing people
                                 </p>
                             </div>
-                            <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm/6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
-                                <figure class="rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5 sm:col-span-2 xl:col-start-2 xl:row-end-1">
-                                    <blockquote class="p-6 text-lg font-semibold tracking-tight text-gray-900 sm:p-12 sm:text-xl/8">
+                            <div
+                                class="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm/6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
+                                <figure
+                                    class="rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5 sm:col-span-2 xl:col-start-2 xl:row-end-1">
+                                    <blockquote
+                                        class="p-6 text-lg font-semibold tracking-tight text-gray-900 sm:p-12 sm:text-xl/8">
                                         <p>{`“${featuredTestimonial.body}”`}</p>
                                     </blockquote>
-                                    <figcaption class="flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-gray-900/10 px-6 py-4 sm:flex-nowrap">
+                                    <figcaption
+                                        class="flex flex-wrap items-center gap-x-4 gap-y-4 border-t border-gray-900/10 px-6 py-4 sm:flex-nowrap">
                                         <img
                                             alt=""
                                             src={featuredTestimonial.author.imageUrl}
                                             class="size-10 flex-none rounded-full bg-gray-50"
                                         />
                                         <div class="flex-auto">
-                                            <div class="font-semibold text-gray-900">{featuredTestimonial.author.name}</div>
+                                            <div
+                                                class="font-semibold text-gray-900">{featuredTestimonial.author.name}</div>
                                             <div class="text-gray-600">{`@${featuredTestimonial.author.handle}`}</div>
                                         </div>
-                                        <img alt="" src={featuredTestimonial.author.logoUrl} class="h-10 w-auto flex-none" />
+                                        <img alt="" src={featuredTestimonial.author.logoUrl}
+                                             class="h-10 w-auto flex-none"/>
                                     </figcaption>
                                 </figure>
-                                {testimonials.map((columnGroup, columnGroupIdx) => (
-                                    <div key={columnGroupIdx} class="space-y-8 xl:contents xl:space-y-0">
-                                        {columnGroup.map((column, columnIdx) => (
-                                            <div
-                                                key={columnIdx}
-                                                class={classNames(
-                                                    {
-                                                        classes: [(columnGroupIdx === 0 && columnIdx === 0) ||
-                                                        (columnGroupIdx === testimonials.length - 1 && columnIdx === columnGroup.length - 1)
-                                                            ? 'xl:row-span-2'
-                                                            : 'xl:row-start-1', 'space-y-8']
-                                                    },
-
-                                                )}
-                                            >
-                                                {column.map((testimonial) => (
-                                                    <figure
-                                                        key={testimonial.author.handle}
-                                                        class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5"
+                                <For each={testimonials}>
+                                    {(columnGroup, columnGroupIdx) => (
+                                        <div class="space-y-8 xl:contents xl:space-y-0">
+                                            <For each={columnGroup}>
+                                                {(column, columnIdx) => (
+                                                    <div
+                                                        class={cn(
+                                                            (
+                                                                (columnGroupIdx() === 0 && columnIdx() === 0) ||
+                                                                (columnGroupIdx() === testimonials.length - 1 && columnIdx() === columnGroup.length - 1)
+                                                                    ? 'xl:row-span-2' : 'xl:row-start-1')
+                                                        )}
                                                     >
-                                                        <blockquote class="text-gray-900">
-                                                            <p>{`“${testimonial.body}”`}</p>
-                                                        </blockquote>
-                                                        <figcaption class="mt-6 flex items-center gap-x-4">
-                                                            <img
-                                                                alt=""
-                                                                src={testimonial.author.imageUrl}
-                                                                class="size-10 rounded-full bg-gray-50"
-                                                            />
-                                                            <div>
-                                                                <div class="font-semibold text-gray-900">{testimonial.author.name}</div>
-                                                                <div class="text-gray-600">{`@${testimonial.author.handle}`}</div>
-                                                            </div>
-                                                        </figcaption>
-                                                    </figure>
-                                                ))}
-                                            </div>
-                                        ))}
-                                    </div>
-                                ))}
+                                                        <div class={'space-y-8'}>
+                                                            <For each={column}>
+                                                                {(testimonial) => (
+                                                                    <figure
+                                                                        class="rounded-2xl bg-white p-6 shadow-lg ring-1 ring-gray-900/5"
+                                                                    >
+                                                                        <blockquote class="text-gray-900">
+                                                                            <p>{`“${testimonial.body}”`}</p>
+                                                                        </blockquote>
+                                                                        <figcaption
+                                                                            class="mt-6 flex items-center gap-x-4">
+                                                                            <img
+                                                                                alt=""
+                                                                                src={testimonial.author.imageUrl}
+                                                                                class="size-10 rounded-full bg-gray-50"
+                                                                            />
+                                                                            <div>
+                                                                                <div
+                                                                                    class="font-semibold text-gray-900">{testimonial.author.name}</div>
+                                                                                <div
+                                                                                    class="text-gray-600">{`@${testimonial.author.handle}`}</div>
+                                                                            </div>
+                                                                        </figcaption>
+                                                                    </figure>
+                                                                )}
+                                                            </For>
+                                                        </div>
+                                                    </div>
+                                                )}
+
+                                            </For>
+                                        </div>
+                                    )}
+                                </For>
                             </div>
                         </div>
                     </div>
@@ -749,7 +767,7 @@ export default function Example() {
                     <div class="xl:grid xl:grid-cols-3 xl:gap-8">
                         <img
                             alt="Company name"
-                            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+                            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=pink&shade=600"
                             class="h-9"
                         />
                         <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
@@ -757,25 +775,22 @@ export default function Example() {
                                 <div>
                                     <h3 class="text-sm/6 font-semibold text-gray-900">Solutions</h3>
                                     <ul role="list" class="mt-6 space-y-4">
-                                        {footerNavigation.solutions.map((item) => (
-                                            <li key={item.name}>
-                                                <a href={item.href} class="text-sm/6 text-gray-600 hover:text-gray-900">
-                                                    {item.name}
-                                                </a>
-                                            </li>
-                                        ))}
+                                        <For each={footerNavigation.solutions}>
+                                            {(item) => (
+                                                <li>
+                                                    <A href={item.href}
+                                                       class="text-sm/6 text-gray-600 hover:text-gray-900">
+                                                        {item.name}
+                                                    </A>
+                                                </li>
+                                            )}
+                                        </For>
                                     </ul>
                                 </div>
                                 <div class="mt-10 md:mt-0">
                                     <h3 class="text-sm/6 font-semibold text-gray-900">Support</h3>
                                     <ul role="list" class="mt-6 space-y-4">
-                                        {footerNavigation.support.map((item) => (
-                                            <li key={item.name}>
-                                                <a href={item.href} class="text-sm/6 text-gray-600 hover:text-gray-900">
-                                                    {item.name}
-                                                </a>
-                                            </li>
-                                        ))}
+
                                     </ul>
                                 </div>
                             </div>
@@ -783,31 +798,20 @@ export default function Example() {
                                 <div>
                                     <h3 class="text-sm/6 font-semibold text-gray-900">Company</h3>
                                     <ul role="list" class="mt-6 space-y-4">
-                                        {footerNavigation.company.map((item) => (
-                                            <li key={item.name}>
-                                                <a href={item.href} class="text-sm/6 text-gray-600 hover:text-gray-900">
-                                                    {item.name}
-                                                </a>
-                                            </li>
-                                        ))}
+
                                     </ul>
                                 </div>
                                 <div class="mt-10 md:mt-0">
                                     <h3 class="text-sm/6 font-semibold text-gray-900">Legal</h3>
                                     <ul role="list" class="mt-6 space-y-4">
-                                        {footerNavigation.legal.map((item) => (
-                                            <li key={item.name}>
-                                                <a href={item.href} class="text-sm/6 text-gray-600 hover:text-gray-900">
-                                                    {item.name}
-                                                </a>
-                                            </li>
-                                        ))}
+
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
+                    <div
+                        class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
                         <div>
                             <h3 class="text-sm/6 font-semibold text-gray-900">Subscribe to our newsletter</h3>
                             <p class="mt-2 text-sm/6 text-gray-600">
@@ -825,12 +829,12 @@ export default function Example() {
                                 required
                                 placeholder="Enter your email"
                                 auto-complete="email"
-                                class="w-full min-w-0 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus-visible:outline-indigo-600 sm:w-56 sm:text-sm/6"
+                                class="w-full min-w-0 rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus-visible:outline-pink-600 sm:w-56 sm:text-sm/6"
                             />
                             <div class="mt-4 sm:mt-0 sm:ml-4 sm:shrink-0">
                                 <button
                                     type="submit"
-                                    class="flex w-full items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                    class="flex w-full items-center justify-center rounded-md bg-pink-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-pink-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pink-600"
                                 >
                                     Subscribe
                                 </button>
@@ -839,15 +843,17 @@ export default function Example() {
                     </div>
                     <div class="mt-8 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between">
                         <div class="flex gap-x-6 md:order-2">
-                            {footerNavigation.social.map((item) => (
-                                <a key={item.name} href={item.href} class="text-gray-600 hover:text-gray-800">
-                                    <span class="sr-only">{item.name}</span>
-                                    <item.icon aria-hidden="true" class="size-6" />
-                                </a>
-                            ))}
+                            <For each={footerNavigation.social}>
+                                {(item) => (
+                                    <A href={item.href} class="text-gray-600 hover:text-gray-800">
+                                        <span class="sr-only">{item.name}</span>
+                                        <Icon path={item.icon.path} class={item.icon.className}/>
+                                    </A>
+                                )}
+                            </For>
                         </div>
                         <p class="mt-8 text-sm/6 text-gray-600 md:order-1 md:mt-0">
-                            &copy; 2024 Your Company, Inc. All rights reserved.
+                            &copy; 2025 Jace Group, LLC. All rights reserved.
                         </p>
                     </div>
                 </div>
