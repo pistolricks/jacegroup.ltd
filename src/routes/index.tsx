@@ -9,50 +9,49 @@ import {A} from '@solidjs/router';
 import {cn} from "~/app";
 
 
-
 const navigation = [
     {name: 'Product', href: '#'},
     {name: 'Features', href: '#'},
     {name: 'Marketplace', href: '#'},
     {name: 'Company', href: '#'},
 ]
-const primaryFeatures = [
+const secondaryFeatures = [
     {
         name: 'Push to deploy.',
+        href: '#',
         description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit aute id magna.',
         icon: cloudArrowUp,
     },
     {
         name: 'SSL certificates.',
+        href: '#',
         description: 'Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.',
         icon: lockClosed,
     },
     {
         name: 'Database backups.',
+        href: '#',
         description: 'Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus.',
         icon: server,
     },
 ]
-const secondaryFeatures = [
+const primaryFeatures = [
     {
         name: 'Digital Foundation',
         description:
             'We build robust software solutions that form the backbone of your operations, from streamlining internal processes to creating seamless customer experiences.',
-        href: '#',
         icon: cloudArrowUp,
     },
     {
         name: 'Brand Identity',
         description:
             'We craft compelling brand narratives and visual identities that resonate with your target audience, building trust and loyalty.',
-        href: '#',
         icon: lockClosed,
     },
     {
         name: 'Product Innovation',
         description:
             'We develop innovative and market-ready products, turning your ideas into tangible, high-quality offerings for both retail and B2B markets.',
-        href: '#',
         icon: arrowPath,
     },
 ]
@@ -362,28 +361,27 @@ export default function Main() {
                         <rect fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)" width="100%" height="100%"
                               stroke-width={0}/>
                     </svg>
-                    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-16 -mb-50">
-                        <div
-                            class="border border-gray-400 relative isolate overflow-hidden px-6 pt-20 sm:rounded-t-4xl sm:px-10 sm:pt-24 lg:pt-24 xl:px-24">
+                    <div
+                        class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
                         <div class="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
                             <div class="flex">
                                 <div
                                     class="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                                     <span class="font-semibold text-pink-600">We’re hiring</span>
                                     <span aria-hidden="true" class="h-4 w-px bg-gray-900/10"/>
-                                    <A href="#" class="flex items-center gap-x-1">
+                                    <a href="#" class="flex items-center gap-x-1">
                                         <span aria-hidden="true" class="absolute inset-0"/>
                                         See open positions
-                                        <Icon path={chevronRight} aria-hidden="true"
-                                              class="-mr-2 size-5 text-gray-400"/>
-                                    </A>
+                                        <Icon path={chevronRight} class="-mr-2 size-5 text-gray-400"/>
+                                    </a>
                                 </div>
                             </div>
                             <h1 class="mt-10 text-5xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-7xl">
-                                A Better Way to Build.
+                                A better way to build
                             </h1>
                             <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-                                We build the software that powers your business, the brands that connect with your customers, and the products they'll love.
+                                We build the software that powers your business, the brands that connect with your
+                                customers, and the products they love.
                             </p>
                             <div class="mt-10 flex items-center gap-x-6">
                                 <a
@@ -392,13 +390,13 @@ export default function Main() {
                                 >
                                     Get started
                                 </a>
-                                <A href="#" class="text-sm/6 font-semibold text-gray-900">
+                                <a href="#" class="text-sm/6 font-semibold text-gray-900">
                                     Learn more <span aria-hidden="true">→</span>
-                                </A>
+                                </a>
                             </div>
                         </div>
                         <div class="mt-16 sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
-                            <svg role="img" view-box="0 0 366 729" class="mx-auto w-91.5 max-w-full drop-shadow-xl">
+                            <svg role="img" viewBox="0 0 366 729" class="mx-auto w-91.5 max-w-full drop-shadow-xl">
                                 <title>App screenshot</title>
                                 <defs>
                                     <clipPath id="2ade4387-9c63-4fc4-b754-10e687a0d332">
@@ -419,86 +417,82 @@ export default function Main() {
                                     clip-path="url(#2ade4387-9c63-4fc4-b754-10e687a0d332)"
                                     transform="translate(24 24)"
                                 >
-                                    {/*
                                     <img
                                         alt=""
                                         src="https://tailwindcss.com/plus-assets/img/component-images/mobile-app-screenshot.png"
                                     />
-                                    */}
                                 </foreignObject>
                             </svg>
                         </div>
                     </div>
                 </div>
-                </div>
+
                 {/* Logo cloud */}
-                {/*
+
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
                     <div
-                        class="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 opacity-40 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                        class="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-2 gap-y-12 opacity-40 sm:max-w-xl sm:grid-cols-6 sm:gap-x-4 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
 
                         <img
                             alt="Transistor"
-                            src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-gray-900.svg"
-                            width={158}
-                            height={48}
+                            src="/weAreKBeautyLogo.avif"
+                            width={79}
+                            height={79}
                             class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
                         />
                         <img
                             alt="Reform"
-                            src="https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-gray-900.svg"
-                            width={158}
-                            height={48}
+                            src="/ollivr.svg"
+                            width={79}
+                            height={79}
                             class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
                         />
                         <img
                             alt="Tuple"
-                            src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-gray-900.svg"
-                            width={158}
-                            height={48}
+                            src="/jace_company.png"
+                            width={79}
+                            height={79}
                             class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
                         />
                         <img
                             alt="SavvyCal"
-                            src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-gray-900.svg"
-                            width={158}
-                            height={48}
+                            src="/ollivr.svg"
+                            width={79}
+                            height={79}
                             class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
                         />
                         <img
                             alt="Statamic"
-                            src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-gray-900.svg"
-                            width={158}
-                            height={48}
+                            src="/weAreKBeautyLogo.avif"
+                            width={79}
+                            height={79}
                             class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
                         />
 
                     </div>
                 </div>
-*/}
-                {/* Feature section */}
-                <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+
+                <div class="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
                     <div
                         class="relative isolate overflow-hidden bg-gray-900 px-6 py-20 sm:rounded-3xl sm:px-10 sm:py-24 lg:py-24 xl:px-24">
                         <div
                             class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-y-0">
                             <div class="lg:row-start-2 lg:max-w-md">
                                 <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
-                                    Get Started
+                                    Boost your productivity. Start using our app today.
                                 </h2>
                                 <p class="mt-6 text-lg/8 text-gray-300">
-
+                                    We equip your business with the tools and strategies needed to expand your reach and
+                                    build a strong presence in your industry.
                                 </p>
                             </div>
-                            {/*
                             <img
                                 alt="Product screenshot"
-                                src="/compaytics.png"
+                                src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
                                 width={2432}
                                 height={1442}
-                                class="opacity-70 relative -z-20 max-w-xl min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-5xl lg:max-w-none"
+                                class="relative -z-20 max-w-xl min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-5xl lg:max-w-none"
                             />
-                            */}
                             <div
                                 class="max-w-xl lg:row-start-3 lg:mt-10 lg:max-w-md lg:border-t lg:border-white/10 lg:pt-10">
                                 <dl class="max-w-xl space-y-8 text-base/7 text-gray-300 lg:max-w-none">
@@ -533,42 +527,6 @@ export default function Main() {
                     </div>
                 </div>
 
-                {/* Feature section */}
-                <div class="mx-auto mt-32 max-w-7xl px-6 sm:mt-56 lg:px-8">
-                    <div class="mx-auto max-w-2xl lg:text-center">
-                        <h2 class="text-base/7 font-semibold text-pink-600">Market Growth</h2>
-                        <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">
-                            Building better businesses from the inside out.
-                        </p>
-                        <p class="mt-6 text-lg/8 text-gray-600">
-                            We equip your business with the tools and strategies needed to expand your reach and build a strong presence in your industry.
-                        </p>
-                    </div>
-                    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-                        <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-                            <For each={secondaryFeatures}>
-                                {(feature) => (
-                                    <div class="flex flex-col">
-                                        <dt class="flex items-center gap-x-3 text-base/7 font-semibold text-gray-900">
-                                            <Icon path={feature.icon} aria-hidden="true"
-                                                  class="size-5 flex-none text-pink-600"/>
-                                            {feature.name}
-                                        </dt>
-                                        <dd class="mt-4 flex flex-auto flex-col text-base/7 text-gray-600">
-                                            <p class="flex-auto">{feature.description}</p>
-                                            <p class="mt-6">
-                                                <A href={feature.href}
-                                                   class="text-sm/6 font-semibold text-pink-600 hover:text-pink-500">
-                                                    Learn more <span aria-hidden="true">→</span>
-                                                </A>
-                                            </p>
-                                        </dd>
-                                    </div>
-                                )}
-                            </For>
-                        </dl>
-                    </div>
-                </div>
 
                 {/* Newsletter section */}
                 <div class="mx-auto mt-32 max-w-7xl sm:mt-56 sm:px-6 lg:px-8">
@@ -790,7 +748,16 @@ export default function Main() {
                                 <div class="mt-10 md:mt-0">
                                     <h3 class="text-sm/6 font-semibold text-gray-900">Support</h3>
                                     <ul role="list" class="mt-6 space-y-4">
-
+                                        <For each={footerNavigation.support}>
+                                            {(item) => (
+                                                <li>
+                                                    <A href={item.href}
+                                                       class="text-sm/6 text-gray-600 hover:text-gray-900">
+                                                        {item.name}
+                                                    </A>
+                                                </li>
+                                            )}
+                                        </For>
                                     </ul>
                                 </div>
                             </div>
@@ -798,13 +765,31 @@ export default function Main() {
                                 <div>
                                     <h3 class="text-sm/6 font-semibold text-gray-900">Company</h3>
                                     <ul role="list" class="mt-6 space-y-4">
-
+                                        <For each={footerNavigation.company}>
+                                            {(item) => (
+                                                <li>
+                                                    <A href={item.href}
+                                                       class="text-sm/6 text-gray-600 hover:text-gray-900">
+                                                        {item.name}
+                                                    </A>
+                                                </li>
+                                            )}
+                                        </For>
                                     </ul>
                                 </div>
                                 <div class="mt-10 md:mt-0">
                                     <h3 class="text-sm/6 font-semibold text-gray-900">Legal</h3>
                                     <ul role="list" class="mt-6 space-y-4">
-
+                                        <For each={footerNavigation.legal}>
+                                            {(item) => (
+                                                <li>
+                                                    <A href={item.href}
+                                                       class="text-sm/6 text-gray-600 hover:text-gray-900">
+                                                        {item.name}
+                                                    </A>
+                                                </li>
+                                            )}
+                                        </For>
                                     </ul>
                                 </div>
                             </div>
