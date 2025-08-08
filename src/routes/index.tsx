@@ -7,6 +7,7 @@ import {Icon} from 'solid-heroicons';
 import Dialog from "@corvu/dialog";
 import {A} from '@solidjs/router';
 import {cn} from "~/app";
+import {IPhone15} from "~/components/ui/iphone-15";
 
 
 const navigation = [
@@ -252,7 +253,7 @@ export default function Main() {
                             <img
                                 alt=""
                                 src="/jace_company.png"
-                                class="h-14 w-auto rounded-md"
+                                class="h-12 w-auto rounded-md"
                             />
                         </A>
                     </div>
@@ -291,8 +292,8 @@ export default function Main() {
                                     <span class="sr-only">Jace & Company</span>
                                     <img
                                         alt=""
-                                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=pink&shade=600"
-                                        class="h-8 w-auto"
+                                        src="/jace_company.png"
+                                        class="h-12 w-auto rounded-md"
                                     />
                                 </A>
                                 <button
@@ -367,11 +368,12 @@ export default function Main() {
                             <div class="flex">
                                 <div
                                     class="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                                    <span class="font-semibold text-pink-600">Brands</span>
+                                    <span class="font-semibold text-pink-600">EXPLORE</span>
                                     <span aria-hidden="true" class="h-4 w-px bg-gray-900/10"/>
                                     <a href="#" class="flex items-center gap-x-1">
                                         <span aria-hidden="true" class="absolute inset-0"/>
-                                       Check out everything we have to offer
+                                        <span class={"sm:hidden"}>COMPANIES</span>
+                                        <span class={"hidden sm:block"}>Everything we have to offer</span>
                                         <Icon path={chevronRight} class="-mr-2 size-5 text-gray-400"/>
                                     </a>
                                 </div>
@@ -396,33 +398,10 @@ export default function Main() {
                             </div>
                         </div>
                         <div class="mt-16 sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
-                            <svg role="img" viewBox="0 0 366 729" class="mx-auto w-91.5 max-w-full drop-shadow-xl">
-                                <title>App screenshot</title>
-                                <defs>
-                                    <clipPath id="2ade4387-9c63-4fc4-b754-10e687a0d332">
-                                        <rect rx={36} width={316} height={684}/>
-                                    </clipPath>
-                                </defs>
-                                <path
-                                    d="M363.315 64.213C363.315 22.99 341.312 1 300.092 1H66.751C25.53 1 3.528 22.99 3.528 64.213v44.68l-.857.143A2 2 0 0 0 1 111.009v24.611a2 2 0 0 0 1.671 1.973l.95.158a2.26 2.26 0 0 1-.093.236v26.173c.212.1.398.296.541.643l-1.398.233A2 2 0 0 0 1 167.009v47.611a2 2 0 0 0 1.671 1.973l1.368.228c-.139.319-.314.533-.511.653v16.637c.221.104.414.313.56.689l-1.417.236A2 2 0 0 0 1 237.009v47.611a2 2 0 0 0 1.671 1.973l1.347.225c-.135.294-.302.493-.49.607v377.681c0 41.213 22 63.208 63.223 63.208h95.074c.947-.504 2.717-.843 4.745-.843l.141.001h.194l.086-.001 33.704.005c1.849.043 3.442.37 4.323.838h95.074c41.222 0 63.223-21.999 63.223-63.212v-394.63c-.259-.275-.48-.796-.63-1.47l-.011-.133 1.655-.276A2 2 0 0 0 366 266.62v-77.611a2 2 0 0 0-1.671-1.973l-1.712-.285c.148-.839.396-1.491.698-1.811V64.213Z"
-                                    fill="#4B5563"
-                                />
-                                <path
-                                    d="M16 59c0-23.748 19.252-43 43-43h246c23.748 0 43 19.252 43 43v615c0 23.196-18.804 42-42 42H58c-23.196 0-42-18.804-42-42V59Z"
-                                    fill="#343E4E"
-                                />
-                                <foreignObject
-                                    width={316}
-                                    height={684}
-                                    clip-path="url(#2ade4387-9c63-4fc4-b754-10e687a0d332)"
-                                    transform="translate(24 24)"
-                                >
-                                    <img
-                                        alt=""
-                                        src="https://tailwindcss.com/plus-assets/img/component-images/mobile-app-screenshot.png"
-                                    />
-                                </foreignObject>
-                            </svg>
+                            <div class="relative">
+                                <IPhone15 src={"/products.webp"} class="size-full" />
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -431,35 +410,35 @@ export default function Main() {
 
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
                     <div
-                        class="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-2 gap-y-12 opacity-90 sm:max-w-xl sm:grid-cols-6 sm:gap-x-4 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                        class="mx-auto grid max-w-lg items-center gap-x-2 gap-y-12 opacity-90 sm:max-w-xl  sm:gap-x-4 sm:gap-y-14 lg:mx-0 lg:max-w-none grid-cols-5">
 
-                        <div class={"col-span-2 lg:col-span-1 max-h-12 sm:max-h-48 max-w-48 aspect-square flex justify-center items-center border border-gray-500"}>
+                        <div class={"col-span-1 size-full aspect-square flex justify-center items-center border border-gray-500"}>
                         <img
                             alt="We Are KBeauty"
                             src="/weAreKBeautyLogo.avif"
-                            class="max-h-12 sm:max-h-48 w-48 object-cover"
+                            class="size-full aspect-square object-contain"
                         />
                         </div>
                         <img
                             alt="My KBeauty Shop"
                             src="/myKBeautyShopLogo.png"
-                            class="col-span-2  max-h-12 sm:max-h-48 w-48 object-contain lg:col-span-1 border border-gray-500"
+                            class="col-span-1 size-full aspect-square object-contain border border-gray-500"
                         />
                         <img
                             alt="jace"
                             src="/jace_company.png"
-                            class="col-span-2 max-h-12 sm:max-h-48 w-48 object-contain lg:col-span-1 border border-gray-500"
+                            class="col-span-1 size-full aspect-square object-contain border border-gray-500"
                         />
                         <img
                             alt="Ollivr Services"
                             src="/ollivrServicesLogo.png"
-                            class="col-span-2 max-h-12 sm:max-h-48 w-48 object-contain sm:col-start-2 lg:col-span-1 border border-gray-500"
+                            class="col-span-1 size-full aspect-square object-contain border border-gray-500"
                         />
-                        <div class={"col-span-2  lg:col-span-1 max-h-12 sm:max-h-48 max-w-48 aspect-square flex justify-center items-center border border-gray-500"}>
+                        <div class={"col-span-1 size-full aspect-square flex justify-center items-center border border-gray-500"}>
                         <img
                             alt="We Are KBeauty"
                             src="/weAreKBeautyLogo.avif"
-                            class="max-h-12 sm:max-h-48 w-48 object-cover"
+                            class="size-full aspect-square object-contain"
                         />
                         </div>
                     </div>
@@ -475,16 +454,16 @@ export default function Main() {
 
                                 </h2>
                                 <p class="mt-6 text-lg/8 text-gray-300">
-                                    We equip your business with the tools and strategies needed to expand your reach and
+                                    We can equip your business with the tools and strategies needed to expand your reach and
                                     build a strong presence in your industry.
                                 </p>
                             </div>
                             <img
                                 alt="Product screenshot"
-                                src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
+                                src="/icd-makeup.webp"
                                 width={2432}
                                 height={1442}
-                                class="relative -z-20 max-w-xl min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-5xl lg:max-w-none"
+                                class="relative opacity-20 -z-20 max-w-xl min-w-full rounded-xl shadow-xl ring-1 ring-white/10 lg:row-span-4 lg:w-5xl lg:max-w-none"
                             />
                             <div
                                 class="max-w-xl lg:row-start-3 lg:mt-10 lg:max-w-md lg:border-t lg:border-white/10 lg:pt-10">
