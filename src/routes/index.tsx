@@ -367,11 +367,11 @@ export default function Main() {
                             <div class="flex">
                                 <div
                                     class="relative flex items-center gap-x-4 rounded-full bg-white px-4 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                                    <span class="font-semibold text-pink-600">We’re hiring</span>
+                                    <span class="font-semibold text-pink-600">Brands</span>
                                     <span aria-hidden="true" class="h-4 w-px bg-gray-900/10"/>
                                     <a href="#" class="flex items-center gap-x-1">
                                         <span aria-hidden="true" class="absolute inset-0"/>
-                                        See open positions
+                                       Check out everything we have to offer
                                         <Icon path={chevronRight} class="-mr-2 size-5 text-gray-400"/>
                                     </a>
                                 </div>
@@ -380,7 +380,7 @@ export default function Main() {
                                 A better way to build
                             </h1>
                             <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">
-                                We build the software that powers your business, the brands that connect with your
+                                We build the software that powers business, the brands that connect with
                                 customers, and the products they love.
                             </p>
                             <div class="mt-10 flex items-center gap-x-6">
@@ -431,44 +431,37 @@ export default function Main() {
 
                 <div class="mx-auto max-w-7xl px-6 lg:px-8">
                     <div
-                        class="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-2 gap-y-12 opacity-40 sm:max-w-xl sm:grid-cols-6 sm:gap-x-4 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                        class="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-2 gap-y-12 opacity-90 sm:max-w-xl sm:grid-cols-6 sm:gap-x-4 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
 
+                        <div class={"col-span-2 lg:col-span-1 max-h-12 sm:max-h-48 max-w-48 aspect-square flex justify-center items-center border border-gray-500"}>
                         <img
-                            alt="Transistor"
+                            alt="We Are KBeauty"
                             src="/weAreKBeautyLogo.avif"
-                            width={79}
-                            height={79}
-                            class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                            class="max-h-12 sm:max-h-48 w-48 object-cover"
+                        />
+                        </div>
+                        <img
+                            alt="My KBeauty Shop"
+                            src="/myKBeautyShopLogo.png"
+                            class="col-span-2  max-h-12 sm:max-h-48 w-48 object-contain lg:col-span-1 border border-gray-500"
                         />
                         <img
-                            alt="Reform"
-                            src="/ollivr.svg"
-                            width={79}
-                            height={79}
-                            class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                        />
-                        <img
-                            alt="Tuple"
+                            alt="jace"
                             src="/jace_company.png"
-                            width={79}
-                            height={79}
-                            class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+                            class="col-span-2 max-h-12 sm:max-h-48 w-48 object-contain lg:col-span-1 border border-gray-500"
                         />
                         <img
-                            alt="SavvyCal"
-                            src="/ollivr.svg"
-                            width={79}
-                            height={79}
-                            class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
+                            alt="Ollivr Services"
+                            src="/ollivrServicesLogo.png"
+                            class="col-span-2 max-h-12 sm:max-h-48 w-48 object-contain sm:col-start-2 lg:col-span-1 border border-gray-500"
                         />
+                        <div class={"col-span-2  lg:col-span-1 max-h-12 sm:max-h-48 max-w-48 aspect-square flex justify-center items-center border border-gray-500"}>
                         <img
-                            alt="Statamic"
+                            alt="We Are KBeauty"
                             src="/weAreKBeautyLogo.avif"
-                            width={79}
-                            height={79}
-                            class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
+                            class="max-h-12 sm:max-h-48 w-48 object-cover"
                         />
-
+                        </div>
                     </div>
                 </div>
 
@@ -479,7 +472,7 @@ export default function Main() {
                             class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center lg:gap-y-0">
                             <div class="lg:row-start-2 lg:max-w-md">
                                 <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
-                                    Boost your productivity. Start using our app today.
+
                                 </h2>
                                 <p class="mt-6 text-lg/8 text-gray-300">
                                     We equip your business with the tools and strategies needed to expand your reach and
@@ -584,6 +577,7 @@ export default function Main() {
                 </div>
 
                 {/* Testimonials section */}
+
                 <div class="relative isolate mt-32 sm:mt-56 sm:pt-32">
                     <svg
                         aria-hidden="true"
@@ -635,15 +629,20 @@ export default function Main() {
                                 class="-ml-88 aspect-1313/771 w-328.25 flex-none origin-top-right rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] xl:mr-[calc(50%-12rem)] xl:ml-0"
                             />
                         </div>
+
                         <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                            {/*
                             <div class="mx-auto max-w-2xl text-center">
                                 <h2 class="text-base/7 font-semibold text-pink-600">Testimonials</h2>
                                 <p class="mt-2 text-4xl font-semibold tracking-tight text-balance text-gray-900 sm:text-5xl">
                                     We have worked with thousands of amazing people
                                 </p>
                             </div>
+                            */}
                             <div
                                 class="mx-auto mt-16 grid max-w-2xl grid-cols-1 grid-rows-1 gap-8 text-sm/6 text-gray-900 sm:mt-20 sm:grid-cols-2 xl:mx-0 xl:max-w-none xl:grid-flow-col xl:grid-cols-4">
+
+                               {/*
                                 <figure
                                     class="rounded-2xl bg-white shadow-lg ring-1 ring-gray-900/5 sm:col-span-2 xl:col-start-2 xl:row-end-1">
                                     <blockquote
@@ -666,6 +665,8 @@ export default function Main() {
                                              class="h-10 w-auto flex-none"/>
                                     </figcaption>
                                 </figure>
+*/}
+                                {/*
                                 <For each={testimonials}>
                                     {(columnGroup, columnGroupIdx) => (
                                         <div class="space-y-8 xl:contents xl:space-y-0">
@@ -713,10 +714,14 @@ export default function Main() {
                                         </div>
                                     )}
                                 </For>
+                                */}
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
             </main>
 
             {/* Footer */}
