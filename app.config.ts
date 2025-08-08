@@ -1,8 +1,15 @@
 import {defineConfig} from "@solidjs/start/config";
 import tailwindcss from "@tailwindcss/vite";
-import {type ClassValue, clsx} from "clsx"
+import {clsx} from "clsx"
 
 export default defineConfig({
+    server: {
+        preset: "cloudflare-pages",
+
+        rollupConfig: {
+            external: ["node:async_hooks"]
+        }
+    },
     vite: {
         // @ts-ignore
         plugins: [tailwindcss()]
