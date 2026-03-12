@@ -434,10 +434,10 @@ export default function Main() {
                             src="/ollivrServicesLogo.png"
                             class="col-span-1 size-full aspect-square object-contain border border-gray-500"
                         />
-                        <div class={"col-span-1 size-full aspect-square flex justify-center items-center border border-gray-500 p-2 sm:p-4"}>
+                        <div class={"col-span-1 size-full aspect-auto flex justify-center items-center border border-gray-500 bg-[#faf6ea]"}>
                         <img
-                            alt="Custom Ink and Thread"
-                            src="/customInkAndThread.png"
+                            alt="F Around and Five Out!"
+                            src="/FuckAroundAndFiveOut.png"
                             class="size-full aspect-square object-contain"
                         />
                         </div>
